@@ -1,0 +1,60 @@
+group 'org.telegram'
+version '1.1.0'
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.telegram:telegrambots:3.0.2'
+    compile 'com.google.guava:guava:19.0'
+    compile 'org.mapdb:mapdb:3.0.4'
+    compile 'org.apache.commons:commons-lang3:3.5'
+
+    testCompile 'org.mockito:mockito-all:2.0.2-beta'
+    testCompile 'junit:junit:4.11'
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+task fatJar(type: Jar) {
+    baseName = project.name + '-with-dependencies'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+publishing {
+    publications {
+        all {
+            pom.withXml {
+                asNode().dependencies.'*'.findAll() {
+                    it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
+                        dep.name == it.artifactId.text()
+                    }
+                }.each { it.scope*.value = 'compile' }
+            }
+        }
+
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
