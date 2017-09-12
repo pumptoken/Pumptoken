@@ -14,11 +14,11 @@ How can I separate logic execution of different features?
 How can I unit-test my feature outside of Telegram?
 Every time you write a command or a feature, you will need to answer these questions and ensure that your feature logic works.
 
-Ability Bot Abstraction
+Pump Bot Abstraction
 
-After implementing my fifth bot using that API, I had had it with the amount of boilerplate code that was needed for every added feature. Methods were getting overly-complex and readability became subpar. That is where the notion of another layer of abstraction (AbilityBot) began taking shape.
+After implementing my fifth bot using that API, I had had it with the amount of boilerplate code that was needed for every added feature. Methods were getting overly-complex and readability became subpar. That is where the notion of another layer of abstraction (PumpBot) began taking shape.
 
-The AbilityBot abstraction defines a new object, named Ability. An ability combines conditions, flags, action, post-action and replies. As an example, here is a code-snippet of an ability that creates a /hello command:
+The PumpBot abstraction defines a new object, named Ability. An ability combines conditions, flags, action, post-action and replies. As an example, here is a code-snippet of an ability that creates a /hello command:
 
 public Ability sayHelloWorld() {
     return Ability
@@ -28,7 +28,7 @@ public Ability sayHelloWorld() {
               .input(0)
               .locality(USER)
               .privacy(ADMIN)
-              .action(ctx -> sender.send("Hello world!", ctx.chatId()))
+              .action(ctx -> sender.send("Hello", ctx.chatId()))
               .post(ctx -> sender.send("Bye world!", ctx.chatId()))
               .build();
 }
