@@ -1,0 +1,61 @@
+		 <html>
+		 <head>
+		-  <title>Pumptoken - Insurance App</title>
+		+  <title>Pumptoken - Sample Dapp</title>
+		   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		   <link href="./app.css" rel='stylesheet' type='text/css'>
+		   <script src="./app.js"></script>
+		 </head>
+		 <body>
+		-  <h1>MetaCoin</h1>
+		-  <h2>Example Truffle Dapp</h2>
+		-  <h3>You have <span class="black"><span id="balance"></span> META</span></h3>
+		+  <h1>BeatCoin</h1><br />
+		+  <h2>Balances</h2>
+		+  <p>Total Coin Supply: <span id="supply"></span></p>
+		+  <table>
+		+    <thead>
+		+    <tr>
+		+      <th>Account</th>
+		+      <th>Balance</th>
+		+      <th></th>
+		+    </tr>
+		+  </thead>
+		+  <tbody id="balances">
+		+  </tbody>
+		+  </table>
+		+  <h2>Transactions</h2><br />
+		+  <label>From Account:</label>
+		+  <select id="accounts"></select>
+		 
+		-  <br>
+		-  <h1>Send</h1>
+		-  <br><label for="amount">Amount:</label><input type="text" id="amount" placeholder="e.g., 95"></input>
+		-  <br><label for="receiver">To Address:</label><input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+		-  <br><br><button id="send" onclick="sendCoin()">Send MetaCoin</button>
+		-  <br><br>
+		-  <span id="status"></span>
+		+  <form id="registeruser">
+		+    <legend><h3>Register User</h3></legend>
+		+    <label>Username:</label>
+		+    <input id="regId" type="text" name="user" placeholder="user ID"></input>
+		+    <label>Wallet Address:</label>
+		+    <input id="regPrice" type="number" name="address" placeholder=">Wallet Address price"></input>
+		+    <label>Namespace:</label>
+		+    <select id="registerName"></select>
+		+    <input type="button" value="Register" onclick="registeruser();" />
+		+  </form>
+		+
+		+  <form id="purchase" onsubmit="purchase()">
+		+    <legend><h3>Purchase </h3></legend>
+		+    <label>:</label>
+		+    <input id="purId" type="text" name="insurance" placeholder="insure ID"></input>
+		+    <label>Price:</label>
+		+    <input id="purPrice" type="number" name="price" placeholder="Song purchase price"></input>
+		+    <label>Insureme:</label>
+		+    <select id="purchaseName"></select>
+		+    <input type="button" value="Purchase" onclick="purchase();" />
+		+  </form>
+		 </body>
+		 </html>
+
