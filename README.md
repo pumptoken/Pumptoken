@@ -5,5 +5,7 @@ This will serve as a basic prototype of all apps that'll be built on blockchain 
 
 
 This is  a web app that shows coin supply, blockchain transactions and balances. Capable of …
-…adding to balances and performing register/purchase transactions  
-
+…adding to balances and performing register/purchase transactions  and bot api integration with 
+other platform(Telegram and Mobile App)
+ 
+ 
